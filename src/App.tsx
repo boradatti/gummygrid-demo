@@ -1,11 +1,7 @@
-import { ColorSchemeContextProvider } from './contexts/color-scheme';
+import GummyGrid from 'gummygrid';
 
 function App() {
-  return (
-    <ColorSchemeContextProvider>
-      <div>hello</div>
-    </ColorSchemeContextProvider>
-  );
+  return <div>hell</div>;
 }
 
 export default App;
