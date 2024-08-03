@@ -1,12 +1,20 @@
+const colorDegrees = [
+  "50",
+  "100",
+  "200",
+  "300",
+  "400",
+  "500",
+  "600",
+  "700",
+  "800",
+  "900",
+  "950",
+];
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: [
-    "variant",
-    [
-      "@media (prefers-color-scheme: dark) { &:not(.light *) }",
-      "&:is(.dark *)",
-    ],
-  ],
+  darkMode: ["class"],
   content: [
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
@@ -29,6 +37,7 @@ module.exports = {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        neutral: getColorDegreeObject("neutral"),
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -81,3 +90,12 @@ module.exports = {
   },
   plugins: [require("tailwindcss-animate"), "prettier-plugin-tailwindcss"],
 };
+
+function getColorDegreeObject(color) {
+  return colorDegrees.reduce((obj, dgr) => {
+    obj[dgr] = `hsl(var(--${color}-${dgr}))`;
+    return obj;
+  }, {});
+}
+
+console.log(getColorDegreeObject("neutral"));

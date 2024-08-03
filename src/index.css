@@ -29,6 +29,19 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
+
+    /* neutral colors */
+    --neutral-50: 60 9 98%;
+    --neutral-100: 60 5 96%;
+    --neutral-200: 20 6 90%;
+    --neutral-300: 24 6 83%;
+    --neutral-400: 24 5 64%;
+    --neutral-500: 25 5 45%;
+    --neutral-600: 33 5 32%;
+    --neutral-700: 30 6 25%;
+    --neutral-800: 12 6 15%;
+    --neutral-900: 24 10 10%;
+    --neutral-950: 20 14 4%;
   }
 
   .dark {
@@ -56,6 +69,19 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+
+    /* neutral colors */
+    --neutral-950: 60 9 98%;
+    --neutral-900: 60 5 96%;
+    --neutral-800: 20 6 90%;
+    --neutral-700: 24 6 83%;
+    --neutral-600: 24 5 64%;
+    --neutral-500: 25 5 45%;
+    --neutral-400: 33 5 32%;
+    --neutral-300: 30 6 25%;
+    --neutral-200: 12 6 15%;
+    --neutral-100: 24 10 10%;
+    --neutral-50: 20 14 4%;
   }
 }
 
