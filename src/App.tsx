@@ -42,7 +42,7 @@ function App() {
             <a
               href="https://github.com/boradatti/gummygrid"
               target="_blank"
-              className={`flex gap-3 ${buttonVariants({ variant: "outline" })}`}
+              className={`flex gap-3 ${buttonVariants({ variant: "destructive" })}`}
             >
               <GithubIcon className="w-5" />
               view repo
