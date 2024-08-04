@@ -11,6 +11,11 @@ import { DimensionsInput } from "@/components/layout/config/dimensions";
 import { AreaRatioInput } from "./components/layout/config/area-ratio";
 import { RoundingInput } from "./components/layout/config/rounding";
 import { DensityInput } from "./components/layout/config/density";
+import { FlowInput } from "./components/layout/config/flow";
+import { VerticalSymmetryInput } from "./components/layout/config/vertical-symmetry";
+import { OutlineInput } from "./components/layout/config/outline";
+import { GutterInput } from "./components/layout/config/gutter";
+import { ShadowInput } from "./components/layout/config/shadow";
 
 function App() {
   const { ggReconfig } = useGummyGrid();
@@ -57,62 +62,15 @@ function App() {
                 </div>
               </div>
 
-              <div className="flex flex-col gap-1">
-                <span className="text-neutral-700">effects</span>
-
+              <InputGroup label="effects">
                 <div className="flex flex-col gap-2">
-                  <div className="flex items-center gap-2">
-                    <Checkbox defaultChecked={true} />
-                    <span className="text-sm text-neutral-700">flow</span>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <Checkbox
-                      onCheckedChange={(checked: boolean) => {
-                        ggReconfig((config) => {
-                          config.grid.verticalSymmetry = checked;
-                        });
-                      }}
-                    />
-                    <span className="text-sm text-neutral-700">
-                      vertical symmetry
-                    </span>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <Input
-                      type="number"
-                      defaultValue={0}
-                      min={0}
-                      max={9}
-                      className="h-6 w-6 p-0 pl-2"
-                    />
-                    <span className="text-sm text-neutral-700">outline</span>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <Input
-                      type="number"
-                      defaultValue={0}
-                      min={0}
-                      max={9}
-                      className="h-6 w-6 p-0 pl-2"
-                    />
-                    <span className="text-sm text-neutral-700">gutter</span>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <Input
-                      type="number"
-                      defaultValue={0}
-                      min={0}
-                      max={9}
-                      className="h-6 w-6 p-0 pl-2"
-                    />
-                    <span className="text-sm text-neutral-700">shadow</span>
-                  </div>
+                  <FlowInput />
+                  <VerticalSymmetryInput />
+                  <OutlineInput />
+                  <GutterInput />
+                  <ShadowInput />
                 </div>
-              </div>
+              </InputGroup>
 
               <div className="flex flex-col gap-1">
                 <span className="text-neutral-700">salt</span>

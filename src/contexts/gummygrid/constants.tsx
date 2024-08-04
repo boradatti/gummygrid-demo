@@ -22,7 +22,7 @@ export const INITIAL_GUMMYGRID_CONFIG: StrictGummyGridConfig = {
     verticalSymmetry: false,
   },
   svg: {
-    patternAreaRatio: 0.75,
+    patternAreaRatio: 0.85,
     colors: {
       background: ["#ededfe"],
       cellFill: [
@@ -40,7 +40,7 @@ export const INITIAL_GUMMYGRID_CONFIG: StrictGummyGridConfig = {
         "#fd811d",
       ],
       cellStroke: [],
-      dropShadow: [],
+      dropShadow: ["black"],
     },
     lockColors: [],
     cellRounding: {
