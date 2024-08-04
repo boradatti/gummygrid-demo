@@ -2,19 +2,15 @@ import PlusIcon from "@/assets/icons/plus.svg?react";
 import LinkIcon from "@/assets/icons/link.svg?react";
 import UnlinkIcon from "@/assets/icons/unlink.svg?react";
 
-import { useTheme } from "./contexts/theme";
-
 import { Input } from "./components/ui/input";
-import { useState } from "react";
 
 import { Checkbox } from "./components/ui/checkbox";
 import { useGummyGrid } from "./contexts/gummygrid/provider";
 import { Header } from "./components/layout/header";
+import { AvatarShowcase } from "./components/layout/avatar-showcase";
 
 function App() {
-  const [usernameInput, setUsernameInput] = useState("");
-  const { gg, ggReconfig } = useGummyGrid();
-  const svg = gg.buildFrom(usernameInput);
+  const { ggReconfig } = useGummyGrid();
 
   return (
     <div className="font-mono md:grid md:h-[100svh] md:place-items-center">
@@ -22,20 +18,7 @@ function App() {
         <Header />
 
         <div className="flex gap-7">
-          <div className="flex w-fit flex-col gap-3">
-            <div className="border-[3px] border-solid">
-              <img
-                className="w-72"
-                src={svg.toURLEncodedString({ withPrefix: true })}
-                alt="generated avatar"
-              />
-            </div>
-            <Input
-              placeholder="enter username..."
-              value={usernameInput}
-              onChange={(e) => setUsernameInput(e.currentTarget.value)}
-            />
-          </div>
+          <AvatarShowcase />
 
           <div className="flex flex-grow gap-24">
             <div className="flex flex-col justify-between">
