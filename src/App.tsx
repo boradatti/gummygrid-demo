@@ -16,6 +16,7 @@ import { VerticalSymmetryInput } from "./components/layout/config/vertical-symme
 import { OutlineInput } from "./components/layout/config/outline";
 import { GutterInput } from "./components/layout/config/gutter";
 import { ShadowInput } from "./components/layout/config/shadow";
+import { SaltInput } from "./components/layout/config/salt";
 
 function App() {
   const { ggReconfig } = useGummyGrid();
@@ -72,10 +73,9 @@ function App() {
                 </div>
               </InputGroup>
 
-              <div className="flex flex-col gap-1">
-                <span className="text-neutral-700">salt</span>
-                <Input type="number" className="h-8" defaultValue={42} />
-              </div>
+              <InputGroup label="salt">
+                <SaltInput />
+              </InputGroup>
             </div>
           </div>
         </div>
