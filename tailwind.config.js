@@ -97,5 +97,3 @@ function getColorDegreeObject(color) {
     return obj;
   }, {});
 }
-
-console.log(getColorDegreeObject("neutral"));

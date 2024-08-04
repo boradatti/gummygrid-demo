@@ -14,6 +14,12 @@ import clsx from "clsx";
 import GummyGrid from "gummygrid";
 import { Input } from "./components/ui/input";
 import { useState } from "react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "./components/ui/tooltip";
 
 function App() {
   const { theme, themeChoice, setThemeChoice } = useTheme();
@@ -36,10 +42,10 @@ function App() {
   }
 
   return (
-    <div className="h-[100svh] font-mono md:grid md:place-items-center">
+    <div className="font-mono md:grid md:h-[100svh] md:place-items-center">
       <div className="mx-auto mt-4 flex w-[95svw] max-w-[50rem] flex-col gap-3">
         <header className="flex items-center gap-5">
-          <div className="ml-3 flex items-center gap-3 md:ml-0">
+          <div className="ml-1 flex items-center gap-3 md:ml-0">
             <div className="h-2.5 w-2.5 bg-foreground"></div>
             <h1 className="text-2xl font-medium">GummyGrid</h1>
           </div>
@@ -47,21 +53,30 @@ function App() {
           <div className="h-[0.5px] flex-grow bg-neutral-200"></div>
 
           <div className="flex gap-2">
-            <a
-              href="https://github.com/boradatti/gummygrid"
-              target="_blank"
-              className={`flex gap-3 ${buttonVariants({ variant: "outline" })}`}
-            >
-              <GithubIcon className="w-5" />
-              view repo
-            </a>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <a
+                    href="https://github.com/boradatti/gummygrid"
+                    target="_blank"
+                    className={`flex gap-3 ${buttonVariants({ variant: "outline" })}`}
+                  >
+                    <GithubIcon className="w-5" />
+                    view repo
+                  </a>
+                </TooltipTrigger>
+                <TooltipContent className="mb-1">
+                  more customizable in code
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant={"outline"} size={"icon"}>
                   <ThemeIcon className="w-5" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent sideOffset={7} align="end">
+              <DropdownMenuContent className="mt-1" align="end">
                 <DropdownMenuItem
                   onClick={() => setThemeChoice("dark")}
                   className={clsx("flex justify-between", {
