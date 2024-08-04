@@ -9,6 +9,7 @@ import { AvatarShowcase } from "@/components/layout/avatar-showcase";
 import { InputGroup } from "@/components/layout/config/input-group";
 import { DimensionsInput } from "@/components/layout/config/dimensions";
 import { AreaRatioInput } from "./components/layout/config/area-ratio";
+import { RoundingInput } from "./components/layout/config/rounding";
 
 function App() {
   const { ggReconfig } = useGummyGrid();
@@ -31,41 +32,9 @@ function App() {
                 <AreaRatioInput />
               </InputGroup>
 
-              <div className="flex flex-col gap-1">
-                <span className="text-neutral-700">rounding</span>
-                <div className="flex items-center gap-2">
-                  <div className="relative w-fit">
-                    <Input
-                      className="textfield h-8 w-16"
-                      type="number"
-                      min={0}
-                      max={100}
-                      defaultValue={0}
-                    />
-                    <span className="absolute right-2 top-0 grid h-full place-items-center text-neutral-500">
-                      %
-                    </span>
-                  </div>
-                  <div className="h-[0.5px] w-3 bg-neutral-300"></div>
-                  <span className="text-neutral-700">outer</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="relative w-fit">
-                    <Input
-                      className="textfield h-8 w-16"
-                      type="number"
-                      min={0}
-                      max={100}
-                      defaultValue={0}
-                    />
-                    <span className="absolute right-2 top-0 grid h-full place-items-center text-neutral-500">
-                      %
-                    </span>
-                  </div>
-                  <div className="h-[0.5px] w-3 bg-neutral-300"></div>
-                  <span className="text-neutral-700">inner</span>
-                </div>
-              </div>
+              <InputGroup label="rounding">
+                <RoundingInput />
+              </InputGroup>
 
               <div className="flex flex-col gap-1">
                 <span className="text-neutral-700">density</span>
