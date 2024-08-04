@@ -1,11 +1,26 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Input } from "../ui/input";
 import { useGummyGrid } from "@/contexts/gummygrid/provider";
+import { useTheme } from "@/contexts/theme";
+import { Theme } from "@/contexts/theme/types";
+
+const BACKGROUND_COLORS_BY_THEME: Record<Theme, string> = {
+  dark: "white",
+  light: "black",
+};
 
 export const AvatarShowcase = () => {
-  const { gg } = useGummyGrid();
+  const { gg, ggReconfig } = useGummyGrid();
   const [usernameInput, setUsernameInput] = useState("");
+  const { theme } = useTheme();
+
   const svg = gg.buildFrom(usernameInput);
+
+  useEffect(() => {
+    ggReconfig((config) => {
+      config.svg.colors.background = [BACKGROUND_COLORS_BY_THEME[theme]];
+    });
+  }, [theme]);
 
   return (
     <div className="flex w-fit flex-col gap-3">
