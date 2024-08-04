@@ -1,13 +1,13 @@
 import PlusIcon from "@/assets/icons/plus.svg?react";
-import LinkIcon from "@/assets/icons/link.svg?react";
-import UnlinkIcon from "@/assets/icons/unlink.svg?react";
 
-import { Input } from "./components/ui/input";
+import { Input } from "@/components/ui/input";
 
-import { Checkbox } from "./components/ui/checkbox";
+import { Checkbox } from "@/components/ui/checkbox";
 import { useGummyGrid } from "./contexts/gummygrid/provider";
-import { Header } from "./components/layout/header";
-import { AvatarShowcase } from "./components/layout/avatar-showcase";
+import { Header } from "@/components/layout/header";
+import { AvatarShowcase } from "@/components/layout/avatar-showcase";
+import { InputGroup } from "@/components/layout/config/input-group";
+import { DimensionsInput } from "@/components/layout/config/dimensions";
 
 function App() {
   const { ggReconfig } = useGummyGrid();
@@ -22,34 +22,9 @@ function App() {
 
           <div className="flex flex-grow gap-24">
             <div className="flex flex-col justify-between">
-              <div className="flex flex-col gap-1">
-                <span className="text-neutral-700">dimensions</span>
-                <div className="flex items-center gap-2">
-                  <div className="relative w-fit">
-                    <Input
-                      className="textfield h-8 w-14"
-                      type="number"
-                      defaultValue={5}
-                    />
-                    <span className="absolute right-2 top-0 grid h-full place-items-center text-neutral-500">
-                      w
-                    </span>
-                  </div>
-                  <div className="relative w-fit">
-                    <Input
-                      className="textfield h-8 w-14"
-                      type="number"
-                      defaultValue={5}
-                    />
-                    <span className="absolute right-2 top-0 grid h-full place-items-center text-neutral-500">
-                      h
-                    </span>
-                  </div>
-                  <button className="group">
-                    <LinkIcon className="w-5 -rotate-45 cursor-pointer stroke-neutral-600 group-hover:stroke-neutral-800" />
-                  </button>
-                </div>
-              </div>
+              <InputGroup label="dimensions">
+                <DimensionsInput />
+              </InputGroup>
 
               <div className="flex flex-col gap-1">
                 <span className="text-neutral-700">area ratio</span>
