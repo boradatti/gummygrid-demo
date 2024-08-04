@@ -14,7 +14,6 @@ import {
   DropdownMenuTrigger,
 } from "./components/ui/dropdown-menu";
 import clsx from "clsx";
-import GummyGrid from "gummygrid";
 import { Input } from "./components/ui/input";
 import { useState } from "react";
 import {
@@ -24,13 +23,12 @@ import {
   TooltipTrigger,
 } from "./components/ui/tooltip";
 import { Checkbox } from "./components/ui/checkbox";
+import { useGummyGrid } from "./contexts/gummygrid/provider";
 
 function App() {
   const { theme, themeChoice, setThemeChoice } = useTheme();
   const [usernameInput, setUsernameInput] = useState("");
-  const gg = new GummyGrid({
-    grid: { ensureFill: { leftRight: true, topBottom: true } },
-  });
+  const { gg, ggReconfig } = useGummyGrid();
   const svg = gg.buildFrom(usernameInput);
 
   let ThemeIcon;
@@ -254,7 +252,13 @@ function App() {
                   </div>
 
                   <div className="flex items-center gap-2">
-                    <Checkbox />
+                    <Checkbox
+                      onCheckedChange={(checked: boolean) => {
+                        ggReconfig((config) => {
+                          config.grid.verticalSymmetry = checked;
+                        });
+                      }}
+                    />
                     <span className="text-sm text-neutral-700">
                       vertical symmetry
                     </span>
