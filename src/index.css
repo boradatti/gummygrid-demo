@@ -47,7 +47,7 @@
     --destructive-foreground: var(--neutral-50);
     --border: var(--neutral-200);
     --input: var(--neutral-200);
-    --ring: var(--neutral-950);
+    --ring: var(--neutral-300);
 
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
@@ -96,13 +96,13 @@
     --secondary-foreground: var(--neutral-950);
     --muted: var(--neutral-200);
     --muted-foreground: var(--neutral-600);
-    --accent: var(--neutral-200);
+    --accent: var(--neutral-100);
     --accent-foreground: var(--neutral-950);
     --destructive: var(--red-100);
     --destructive-foreground: var(--neutral-950);
     --border: var(--neutral-200);
     --input: var(--neutral-200);
-    --ring: var(--neutral-700);
+    --ring: var(--neutral-400);
 
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
