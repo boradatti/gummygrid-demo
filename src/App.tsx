@@ -10,6 +10,7 @@ import { InputGroup } from "@/components/layout/config/input-group";
 import { DimensionsInput } from "@/components/layout/config/dimensions";
 import { AreaRatioInput } from "./components/layout/config/area-ratio";
 import { RoundingInput } from "./components/layout/config/rounding";
+import { DensityInput } from "./components/layout/config/density";
 
 function App() {
   const { ggReconfig } = useGummyGrid();
@@ -36,21 +37,9 @@ function App() {
                 <RoundingInput />
               </InputGroup>
 
-              <div className="flex flex-col gap-1">
-                <span className="text-neutral-700">density</span>
-                <div className="relative w-fit">
-                  <Input
-                    className="textfield h-8 w-16"
-                    type="number"
-                    min={0}
-                    max={100}
-                    defaultValue={50}
-                  />
-                  <span className="absolute right-2 top-0 grid h-full place-items-center text-neutral-500">
-                    %
-                  </span>
-                </div>
-              </div>
+              <InputGroup label="density">
+                <DensityInput />
+              </InputGroup>
             </div>
 
             <div className="flex flex-col justify-between">
