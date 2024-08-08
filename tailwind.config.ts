@@ -1,19 +1,7 @@
-const colorDegrees = [
-  "50",
-  "100",
-  "200",
-  "300",
-  "400",
-  "500",
-  "600",
-  "700",
-  "800",
-  "900",
-  "950",
-];
+import type { Config } from "tailwindcss";
+import animatePlugin from "tailwindcss-animate";
 
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+const config: Config = {
   darkMode: ["class"],
   content: [
     "./pages/**/*.{ts,tsx}",
@@ -88,12 +76,35 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), "prettier-plugin-tailwindcss"],
+  plugins: [
+    animatePlugin,
+    // @ts-ignore
+    "prettier-plugin-tailwindcss",
+  ],
 };
 
-function getColorDegreeObject(color) {
-  return colorDegrees.reduce((obj, dgr) => {
-    obj[dgr] = `hsl(var(--${color}-${dgr}))`;
-    return obj;
-  }, {});
+function getColorDegreeObject(color: string) {
+  const colorDegrees = [
+    "50",
+    "100",
+    "200",
+    "300",
+    "400",
+    "500",
+    "600",
+    "700",
+    "800",
+    "900",
+    "950",
+  ];
+
+  return colorDegrees.reduce(
+    (obj, dgr) => {
+      obj[dgr] = `hsl(var(--${color}-${dgr}))`;
+      return obj;
+    },
+    {} as Record<string, string>,
+  );
 }
+
+export default config;
