@@ -17,9 +17,11 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { useTheme } from "@/contexts/theme";
+import { useDimensions } from "@/hooks/use-dimensions";
 
 export const Header = () => {
   const { theme, themeChoice, setThemeChoice } = useTheme();
+  const { isMobile } = useDimensions();
 
   let ThemeIcon;
   switch (theme) {
@@ -49,10 +51,10 @@ export const Header = () => {
               <a
                 href="https://github.com/boradatti/gummygrid"
                 target="_blank"
-                className={`flex gap-3 ${buttonVariants({ variant: "outline" })}`}
+                className={`flex gap-3 ${buttonVariants({ variant: "outline", size: isMobile ? "icon" : "default" })}`}
               >
                 <GithubIcon className="w-5" />
-                view repo
+                {!isMobile ? "view repo" : ""}
               </a>
             </TooltipTrigger>
             <TooltipContent className="mb-1">
@@ -60,6 +62,7 @@ export const Header = () => {
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>
+
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant={"outline"} size={"icon"}>
