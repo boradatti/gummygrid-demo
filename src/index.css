@@ -119,4 +119,19 @@
   body {
     @apply bg-background text-foreground selection:bg-neutral-300 selection:text-foreground;
   }
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+  .scrollbar-mini::-webkit-scrollbar {
+    @apply w-1;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-neutral-200;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-neutral-500;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-neutral-600;
+  }
 }

@@ -12,8 +12,8 @@ import { SaltInput } from "./config/salt";
 import { ColorsInput } from "./config/colors";
 
 export const SettingsPanel = () => (
-  <div className="flex flex-grow justify-between">
-    <div className="flex flex-col justify-between">
+  <div className="scrollbar-mini mb-4 flex max-h-96 flex-grow flex-col justify-between gap-3 overflow-y-auto border-[1px] px-3 py-2 pb-4 md:m-0 md:max-h-none md:flex-row md:gap-0 md:overflow-visible md:border-none md:p-0">
+    <div className="flex flex-col justify-between gap-3 md:gap-0">
       <InputGroup label="dimensions">
         <DimensionsInput />
       </InputGroup>
@@ -31,7 +31,7 @@ export const SettingsPanel = () => (
       </InputGroup>
     </div>
 
-    <div className="flex flex-col justify-between">
+    <div className="flex flex-col justify-between gap-3 md:gap-0">
       <InputGroup label="colors">
         <ColorsInput />
       </InputGroup>

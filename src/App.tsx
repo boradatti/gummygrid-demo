@@ -5,9 +5,9 @@ import { SettingsPanel } from "@/components/layout/settings-panel";
 function App() {
   return (
     <div className="font-mono md:grid md:h-[100svh] md:place-items-center">
-      <div className="mx-auto mt-4 flex w-[95svw] max-w-[45rem] flex-col gap-3">
+      <div className="mx-auto mt-4 flex w-[95svw] max-w-fit flex-col gap-3 md:max-w-[45rem]">
         <Header />
-        <div className="flex gap-7">
+        <div className="flex w-fit flex-col gap-3 self-center md:w-auto md:flex-row md:gap-7 md:self-auto">
           <AvatarShowcase />
           <SettingsPanel />
         </div>

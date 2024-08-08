@@ -34,7 +34,7 @@ export const Header = () => {
   }
 
   return (
-    <header className="flex items-center gap-5">
+    <header className="mb-1 flex items-center gap-5 md:mb-0">
       <div className="ml-1 flex items-center gap-3 md:ml-0">
         <div className="h-2.5 w-2.5 bg-foreground"></div>
         <h1 className="text-2xl font-medium">GummyGrid</h1>

@@ -26,7 +26,7 @@ export const AvatarShowcase = () => {
     <div className="flex w-fit flex-col gap-3">
       <div className="border-[3px] border-solid">
         <img
-          className="w-72"
+          className="w-96 md:w-72"
           src={svg.toURLEncodedString({ withPrefix: true })}
           alt="generated avatar"
         />
