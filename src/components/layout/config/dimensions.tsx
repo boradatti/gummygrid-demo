@@ -14,7 +14,10 @@ import { Button } from "@/components/ui/button";
 
 type Dimensions = { width: number; height: number };
 type Dimension = keyof Dimensions;
-const INITIAL_DIMENSIONS = INITIAL_GUMMYGRID_CONFIG.grid.size as Dimensions;
+const INITIAL_DIMENSIONS = {
+  width: (INITIAL_GUMMYGRID_CONFIG.grid.size as any).rows,
+  height: (INITIAL_GUMMYGRID_CONFIG.grid.size as any).columns,
+};
 
 export const DimensionsInput: FC = () => {
   const [locked, toggleLocked] = useReducer((locked) => !locked, false);

@@ -1,0 +1,19 @@
+import { ColorsReducer } from "./types";
+
+export const colorsReducer: ColorsReducer = (colors, action) => {
+  switch (action.type) {
+    case "ADD": {
+      return [...colors, action.color];
+    }
+    case "DELETE": {
+      return [
+        ...colors.slice(0, action.idx),
+        ...colors.slice(action.idx + 1, colors.length),
+      ];
+    }
+    default: {
+      // @ts-expect-error
+      throw new Error(`Unhandled action type: ${action.type}`);
+    }
+  }
+};

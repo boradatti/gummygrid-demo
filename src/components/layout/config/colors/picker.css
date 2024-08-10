@@ -1,0 +1,20 @@
+.react-colorful {
+  @apply gap-3 !important;
+}
+
+.react-colorful__saturation,
+.react-colorful__hue,
+.react-colorful__pointer {
+  @apply rounded-none !important;
+}
+
+.react-colorful__saturation,
+.react-colorful__hue {
+  @apply border-[1px] !important;
+  @apply border-neutral-200 !important;
+}
+
+.react-colorful__pointer {
+  @apply border-[1px] !important;
+  @apply border-neutral-900 !important;
+}

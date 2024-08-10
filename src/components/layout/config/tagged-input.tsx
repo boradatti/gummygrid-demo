@@ -17,8 +17,8 @@ export const TaggedNumberInput: FC<Props> = forwardRef(
       <div className="relative w-fit">
         <Input
           className={clsx("textfield h-8", {
-            "w-16": size == "md",
-            "w-14": size == "sm",
+            "w-16 p-3": size == "md",
+            "w-14 p-2": size == "sm",
           })}
           type="number"
           min={min}
