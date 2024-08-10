@@ -1,3 +1,4 @@
+import type { HslColor } from "react-colorful";
 import { ColorsReducer } from "./types";
 
 export const colorsReducer: ColorsReducer = (colors, action) => {
@@ -17,3 +18,7 @@ export const colorsReducer: ColorsReducer = (colors, action) => {
     }
   }
 };
+
+export function convertHslToString(color: HslColor) {
+  return `hsl(${color.h}, ${color.s}%, ${color.l}%)`;
+}

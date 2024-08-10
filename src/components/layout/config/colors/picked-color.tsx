@@ -22,13 +22,15 @@ export const PickedColor: FC<Props> = ({ canDeleteColors, onClick, color }) => (
       className={clsx(
         "grid h-full w-full place-items-center transition-colors",
         {
-          "group-hover:bg-neutral-50/60": canDeleteColors,
+          "group-hover:bg-neutral-50/60 group-focus-visible:bg-neutral-50/60":
+            canDeleteColors,
         },
       )}
     >
       <DeleteIcon
         className={clsx("h-4 w-4 opacity-0 transition-opacity", {
-          "group-hover:opacity-100": canDeleteColors,
+          "group-hover:opacity-100 group-focus-visible:opacity-100":
+            canDeleteColors,
         })}
       />
     </div>

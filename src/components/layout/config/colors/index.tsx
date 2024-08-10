@@ -6,7 +6,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { ColorPicker } from "./picker";
-import { useEffect, useReducer, useState } from "react";
+import { useEffect, useReducer, useRef, useState } from "react";
 import {
   Tooltip,
   TooltipContent,
@@ -30,6 +30,7 @@ export const ColorsInput = () => {
   const canAddColors = colors.length < MAX_PICKED_COLORS;
   const canDeleteColors = colors.length > 1;
   const gg = useGummyGrid();
+  const addColorBtnRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     gg.reconfig((config) => {
@@ -47,6 +48,7 @@ export const ColorsInput = () => {
             canDeleteColors={canDeleteColors}
             onClick={() => {
               updateColors({ type: "DELETE", idx });
+              addColorBtnRef.current!.focus();
             }}
           />
         ))}
@@ -61,7 +63,7 @@ export const ColorsInput = () => {
             <TooltipTrigger asChild>
               <PopoverTrigger asChild>
                 <span
-                  tabIndex={0}
+                  tabIndex={canAddColors ? -1 : 0}
                   onMouseOver={() =>
                     setPickerDisabledTooltipOpen(!canAddColors)
                   }
@@ -71,7 +73,8 @@ export const ColorsInput = () => {
                   className="flex focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                 >
                   <Button
-                    tabIndex={-1}
+                    ref={addColorBtnRef}
+                    tabIndex={canAddColors ? 0 : -1}
                     disabled={!canAddColors}
                     className="group h-6 w-6"
                     variant="ghost"
@@ -92,12 +95,12 @@ export const ColorsInput = () => {
           asChild
           sideOffset={10}
           onCloseAutoFocus={(e) => {
-            if (!canAddColors) e.preventDefault();
+            e.preventDefault();
+            if (canAddColors) addColorBtnRef.current!.focus();
           }}
         >
           <ColorPicker
             onApply={(color) => {
-              console.log(color);
               updateColors({ type: "ADD", color });
               setPickerOpen(false);
             }}
