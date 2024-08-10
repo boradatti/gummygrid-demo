@@ -5,7 +5,7 @@ import {
   INITIAL_GUMMYGRID_CONFIG,
   INITIAL_GUMMYGRID_PROVIDER_STATE,
 } from "./constants";
-import { ggConfigReducer } from "./utils";
+import { gummyGridConfigReducer } from "./utils";
 
 const GummyGridContext = createContext<GummyGridProviderState>(
   INITIAL_GUMMYGRID_PROVIDER_STATE,
@@ -15,14 +15,14 @@ export const GummyGridProvider = ({
   children,
   ...props
 }: GummyGridProviderProps) => {
-  const [ggConfig, ggReconfig] = useReducer(
-    ggConfigReducer,
+  const [config, reconfig] = useReducer(
+    gummyGridConfigReducer,
     INITIAL_GUMMYGRID_CONFIG,
   );
-  const gg = new GummyGrid(ggConfig);
+  const generator = new GummyGrid(config);
 
   return (
-    <GummyGridContext.Provider {...props} value={{ gg, ggReconfig }}>
+    <GummyGridContext.Provider {...props} value={{ generator, reconfig }}>
       {children}
     </GummyGridContext.Provider>
   );

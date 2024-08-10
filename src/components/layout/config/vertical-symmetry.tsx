@@ -5,14 +5,14 @@ import { useGummyGrid } from "@/contexts/gummygrid/provider";
 const INITIAL = INITIAL_GUMMYGRID_CONFIG.grid.verticalSymmetry;
 
 export const VerticalSymmetryInput = () => {
-  const { ggReconfig } = useGummyGrid();
+  const gg = useGummyGrid();
 
   return (
     <div className="flex items-center gap-2">
       <Checkbox
         defaultChecked={INITIAL}
         onCheckedChange={(checked: boolean) => {
-          ggReconfig((config) => {
+          gg.reconfig((config) => {
             config.grid.verticalSymmetry = checked;
           });
         }}

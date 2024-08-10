@@ -18,10 +18,10 @@ export const RoundingInput = () => {
     }),
     INITIAL_ROUNDING,
   );
-  const { ggReconfig } = useGummyGrid();
+  const gg = useGummyGrid();
 
   useEffect(() => {
-    ggReconfig((config) => {
+    gg.reconfig((config) => {
       config.svg.cellRounding = {
         outer: rounding.outer / 100,
         inner: rounding.inner / 100,

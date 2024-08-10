@@ -5,7 +5,7 @@ import { useGummyGrid } from "@/contexts/gummygrid/provider";
 const INITIAL = INITIAL_GUMMYGRID_CONFIG.svg.strokeWidth;
 
 export const OutlineInput = () => {
-  const { ggReconfig } = useGummyGrid();
+  const gg = useGummyGrid();
 
   return (
     <div className="flex items-center gap-2">
@@ -16,7 +16,7 @@ export const OutlineInput = () => {
         max={9}
         className="h-6 w-6 p-0 pl-2"
         onChange={(e) => {
-          ggReconfig((config) => {
+          gg.reconfig((config) => {
             config.svg.strokeWidth = +e.target.value / 2;
           });
         }}

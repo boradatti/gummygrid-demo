@@ -10,14 +10,14 @@ const BACKGROUND_COLORS_BY_THEME: Record<Theme, string> = {
 };
 
 export const AvatarShowcase = () => {
-  const { gg, ggReconfig } = useGummyGrid();
+  const gg = useGummyGrid();
   const [usernameInput, setUsernameInput] = useState("");
   const { theme } = useTheme();
 
-  const svg = gg.buildFrom(usernameInput);
+  const svg = gg.generator.buildFrom(usernameInput);
 
   useEffect(() => {
-    ggReconfig((config) => {
+    gg.reconfig((config) => {
       config.svg.colors.background = [BACKGROUND_COLORS_BY_THEME[theme]];
     });
   }, [theme]);

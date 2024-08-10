@@ -1,6 +1,6 @@
 import type { GummyGridReconfigCallback, StrictGummyGridConfig } from "./types";
 
-export function ggConfigReducer(
+export function gummyGridConfigReducer(
   state: StrictGummyGridConfig,
   callback: GummyGridReconfigCallback,
 ) {

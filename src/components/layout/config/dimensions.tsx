@@ -39,7 +39,7 @@ export const DimensionsInput: FC = () => {
     },
     INITIAL_DIMENSIONS,
   );
-  const { ggReconfig } = useGummyGrid();
+  const gg = useGummyGrid();
 
   useEffect(() => {
     if (locked) {
@@ -50,7 +50,7 @@ export const DimensionsInput: FC = () => {
   }, [locked]);
 
   useEffect(() => {
-    ggReconfig((config) => {
+    gg.reconfig((config) => {
       config.grid.size = {
         rows: dimensions.height,
         columns: dimensions.width,

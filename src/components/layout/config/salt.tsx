@@ -8,7 +8,7 @@ import {
 import { useGummyGrid } from "@/contexts/gummygrid/provider";
 
 export const SaltInput = () => {
-  const { ggReconfig } = useGummyGrid();
+  const gg = useGummyGrid();
 
   return (
     <TooltipProvider>
@@ -19,7 +19,7 @@ export const SaltInput = () => {
             className="h-8"
             defaultValue={42}
             onChange={(e) => {
-              ggReconfig((config) => {
+              gg.reconfig((config) => {
                 config.randomizer.salt = +e.target.value;
               });
             }}

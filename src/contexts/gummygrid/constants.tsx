@@ -52,6 +52,6 @@ export const INITIAL_GUMMYGRID_CONFIG: StrictGummyGridConfig = {
 };
 
 export const INITIAL_GUMMYGRID_PROVIDER_STATE: GummyGridProviderState = {
-  gg: new GummyGrid(INITIAL_GUMMYGRID_CONFIG),
-  ggReconfig: () => {},
+  generator: new GummyGrid(INITIAL_GUMMYGRID_CONFIG),
+  reconfig: () => {},
 };

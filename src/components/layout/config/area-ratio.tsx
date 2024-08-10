@@ -7,10 +7,10 @@ export const AreaRatioInput: FC = () => {
   const [ratio, setRatio] = useState(
     INITIAL_GUMMYGRID_CONFIG.svg.patternAreaRatio * 100,
   );
-  const { ggReconfig } = useGummyGrid();
+  const gg = useGummyGrid();
 
   useEffect(() => {
-    ggReconfig((config) => {
+    gg.reconfig((config) => {
       config.svg.patternAreaRatio = ratio / 100;
     });
   }, [ratio]);

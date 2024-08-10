@@ -29,10 +29,10 @@ export const ColorsInput = () => {
   );
   const canAddColors = colors.length < MAX_PICKED_COLORS;
   const canDeleteColors = colors.length > 1;
-  const { ggReconfig } = useGummyGrid();
+  const gg = useGummyGrid();
 
   useEffect(() => {
-    ggReconfig((config) => {
+    gg.reconfig((config) => {
       config.svg.colors.cellFill = colors;
     });
   }, [colors]);

@@ -7,8 +7,8 @@ export type GummyGridProviderProps = {
 };
 
 export type GummyGridProviderState = {
-  gg: GummyGrid;
-  ggReconfig: (cb: GummyGridReconfigCallback) => void;
+  generator: GummyGrid;
+  reconfig: (cb: GummyGridReconfigCallback) => void;
 };
 
 export type GummyGridReconfigCallback = (config: StrictGummyGridConfig) => void;

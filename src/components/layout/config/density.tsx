@@ -14,10 +14,10 @@ const INITIAL_DENSITY =
 
 export const DensityInput = () => {
   const [density, setDensity] = useState(INITIAL_DENSITY);
-  const { ggReconfig } = useGummyGrid();
+  const gg = useGummyGrid();
 
   useEffect(() => {
-    ggReconfig((config) => {
+    gg.reconfig((config) => {
       config.randomizer.bias.cellFillProbability = density / 100;
     });
   }, [density]);
