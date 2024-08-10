@@ -2,7 +2,8 @@ import { Input } from "@/components/ui/input";
 import { INITIAL_GUMMYGRID_CONFIG } from "@/contexts/gummygrid/constants";
 import { useGummyGrid } from "@/contexts/gummygrid/provider";
 
-const INITIAL = parseInt(INITIAL_GUMMYGRID_CONFIG.svg.filters.dropShadow[2]);
+const INITIAL =
+  parseFloat(INITIAL_GUMMYGRID_CONFIG.svg.filters.dropShadow[2]) * 2;
 
 export const ShadowInput = () => {
   const gg = useGummyGrid();

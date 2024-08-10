@@ -18,6 +18,7 @@ import { ColorsReducer } from "./types";
 import { colorsReducer } from "./utils";
 import { PickedColor } from "./picked-color";
 import { DEFAULT_PICKED_COLORS, MAX_PICKED_COLORS } from "./constants";
+import { darkenColors } from "@/lib/utils";
 
 export const ColorsInput = () => {
   const [pickerOpen, setPickerOpen] = useState(false);
@@ -34,7 +35,10 @@ export const ColorsInput = () => {
 
   useEffect(() => {
     gg.reconfig((config) => {
+      const colorsDarkened = darkenColors(colors);
       config.svg.colors.cellFill = colors;
+      config.svg.colors.cellStroke = colorsDarkened;
+      config.svg.colors.dropShadow = colorsDarkened;
     });
   }, [colors]);
 

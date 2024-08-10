@@ -2,7 +2,7 @@ import { Input } from "@/components/ui/input";
 import { INITIAL_GUMMYGRID_CONFIG } from "@/contexts/gummygrid/constants";
 import { useGummyGrid } from "@/contexts/gummygrid/provider";
 
-const INITIAL = INITIAL_GUMMYGRID_CONFIG.svg.strokeWidth;
+const INITIAL = INITIAL_GUMMYGRID_CONFIG.svg.strokeWidth * 2;
 
 export const OutlineInput = () => {
   const gg = useGummyGrid();
