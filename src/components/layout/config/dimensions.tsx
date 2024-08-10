@@ -9,10 +9,12 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { useGummyGrid } from "@/contexts/gummygrid/provider";
+import { INITIAL_GUMMYGRID_CONFIG } from "@/contexts/gummygrid/constants";
+import { Button } from "@/components/ui/button";
 
 type Dimensions = { width: number; height: number };
 type Dimension = keyof Dimensions;
-const INITIAL_DIMENSIONS = { width: 5, height: 5 };
+const INITIAL_DIMENSIONS = INITIAL_GUMMYGRID_CONFIG.grid.size as Dimensions;
 
 export const DimensionsInput: FC = () => {
   const [locked, toggleLocked] = useReducer((locked) => !locked, false);
@@ -80,9 +82,14 @@ export const DimensionsInput: FC = () => {
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger asChild>
-            <button className="group" onClick={toggleLocked}>
+            <Button
+              className="group h-8 w-8"
+              size="icon"
+              variant="ghost"
+              onClick={toggleLocked}
+            >
               <LockIcon className="w-5 -rotate-45 cursor-pointer stroke-neutral-600 group-hover:stroke-neutral-800" />
-            </button>
+            </Button>
           </TooltipTrigger>
           <TooltipContent className="mb-1">{lockTooltipText}</TooltipContent>
         </Tooltip>
