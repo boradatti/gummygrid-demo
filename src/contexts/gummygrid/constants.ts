@@ -6,7 +6,7 @@ const cellColors = [
   "hsl(12, 90%, 62%)",
   "hsl(187, 60%, 52%)",
   "hsl(293, 63%, 51%)",
-  "hsl(94, 21%, 62%)",
+  "hsl(91, 43%, 55%)",
 ];
 const cellColorsDarkened = darkenColors(cellColors);
 

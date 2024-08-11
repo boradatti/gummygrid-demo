@@ -39,8 +39,7 @@ export const RoundingInput = () => {
           value={rounding.outer}
           onChangeValue={(outer) => changeRounding({ outer })}
         />
-        <div className="h-[0.5px] w-3 bg-neutral-300"></div>
-        <span className="text-neutral-700">outer</span>
+        <span className="text-sm text-neutral-700">outer</span>
       </div>
       <div className="flex items-center gap-2">
         <TaggedNumberInput
@@ -50,8 +49,7 @@ export const RoundingInput = () => {
           value={rounding.inner}
           onChangeValue={(inner) => changeRounding({ inner })}
         />
-        <div className="h-[0.5px] w-3 bg-neutral-300"></div>
-        <span className="text-neutral-700">inner</span>
+        <span className="text-sm text-neutral-700">inner</span>
       </div>
     </div>
   );
