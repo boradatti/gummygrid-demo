@@ -7,7 +7,7 @@ type Props = Omit<ComponentProps<"input">, "size"> & {
   value?: number;
   min?: number;
   max?: number;
-  onChangeValue?: (val: number) => any;
+  onChangeValue?: (val: number) => unknown;
   size?: "sm" | "md";
 };
 
@@ -34,3 +34,5 @@ export const TaggedNumberInput = forwardRef<HTMLInputElement, Props>(
     );
   },
 );
+
+TaggedNumberInput.displayName = "TaggedNumberInput";

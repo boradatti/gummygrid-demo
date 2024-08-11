@@ -13,7 +13,7 @@ export const colorsReducer: ColorsReducer = (colors, action) => {
       ];
     }
     default: {
-      // @ts-expect-error
+      // @ts-expect-error • shouldn't be reached
       throw new Error(`Unhandled action type: ${action.type}`);
     }
   }

@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useReducer } from "react";
 import { GummyGridProviderState, type GummyGridProviderProps } from "./types";
 import GummyGrid from "gummygrid";
 import {
@@ -7,7 +7,7 @@ import {
 } from "./constants";
 import { gummyGridConfigReducer } from "./utils";
 
-const GummyGridContext = createContext<GummyGridProviderState>(
+export const GummyGridContext = createContext<GummyGridProviderState>(
   INITIAL_GUMMYGRID_PROVIDER_STATE,
 );
 
@@ -26,13 +26,4 @@ export const GummyGridProvider = ({
       {children}
     </GummyGridContext.Provider>
   );
-};
-
-export const useGummyGrid = () => {
-  const context = useContext(GummyGridContext);
-
-  if (context === undefined)
-    throw new Error("useGummyGrid must be used within a GummyGridProvider");
-
-  return context;
 };

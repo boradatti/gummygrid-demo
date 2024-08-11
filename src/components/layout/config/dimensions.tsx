@@ -1,6 +1,6 @@
 import LinkIcon from "@/assets/icons/link.svg?react";
 import UnlinkIcon from "@/assets/icons/unlink.svg?react";
-import { type FC, useEffect, useReducer } from "react";
+import { type FC, useCallback, useEffect, useReducer } from "react";
 import { TaggedNumberInput } from "./tagged-input";
 import {
   Tooltip,
@@ -8,15 +8,18 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { useGummyGrid } from "@/contexts/gummygrid/provider";
+import { useGummyGrid } from "@/contexts/gummygrid";
 import { INITIAL_GUMMYGRID_CONFIG } from "@/contexts/gummygrid/constants";
 import { Button } from "@/components/ui/button";
 
+type GridSize = { rows: number; columns: number };
 type Dimensions = { width: number; height: number };
 type Dimension = keyof Dimensions;
+
+const GRID_SIZE_CONFIG = INITIAL_GUMMYGRID_CONFIG.grid.size as GridSize;
 const INITIAL_DIMENSIONS = {
-  width: (INITIAL_GUMMYGRID_CONFIG.grid.size as any).rows,
-  height: (INITIAL_GUMMYGRID_CONFIG.grid.size as any).columns,
+  width: GRID_SIZE_CONFIG.rows,
+  height: GRID_SIZE_CONFIG.columns,
 };
 
 export const DimensionsInput: FC = () => {
@@ -39,7 +42,7 @@ export const DimensionsInput: FC = () => {
     },
     INITIAL_DIMENSIONS,
   );
-  const gg = useGummyGrid();
+  const { reconfig: ggReconfig } = useGummyGrid();
 
   useEffect(() => {
     if (locked) {
@@ -47,16 +50,16 @@ export const DimensionsInput: FC = () => {
         height: dimensions.width,
       });
     }
-  }, [locked]);
+  }, [locked, dimensions.width]);
 
   useEffect(() => {
-    gg.reconfig((config) => {
+    ggReconfig((config) => {
       config.grid.size = {
         rows: dimensions.height,
         columns: dimensions.width,
       };
     });
-  }, [dimensions]);
+  }, [dimensions.height, dimensions.width, ggReconfig]);
 
   let LockIcon = LinkIcon;
   let lockTooltipText = "link values";
@@ -70,14 +73,20 @@ export const DimensionsInput: FC = () => {
       <TaggedNumberInput
         tag="w"
         value={dimensions.width}
-        onChangeValue={(width) => changeDimensions({ width })}
+        onChangeValue={useCallback(
+          (width: number) => changeDimensions({ width }),
+          [],
+        )}
         min={1}
         size="sm"
       />
       <TaggedNumberInput
         tag="h"
         value={dimensions.height}
-        onChangeValue={(height) => changeDimensions({ height })}
+        onChangeValue={useCallback(
+          (height: number) => changeDimensions({ height }),
+          [],
+        )}
         min={1}
         size="sm"
       />

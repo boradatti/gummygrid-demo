@@ -5,24 +5,11 @@ type Props = Exclude<ComponentProps<"input">, "type" | "value"> & {
   initial: number;
   min: number;
   max: number;
-  onChangeValue?: (value: number) => any;
+  onChangeValue?: (value: number) => unknown;
 };
 
 export const ForcedMinMaxInput = forwardRef<HTMLInputElement, Props>(
-  (
-    {
-      initial,
-      min,
-      max,
-      onInput,
-      onChange,
-      onChangeValue,
-      type: _type,
-      value: _value,
-      ...props
-    },
-    ref,
-  ) => {
+  ({ initial, min, max, onInput, onChange, onChangeValue, ...props }, ref) => {
     const [value, setValue] = useReducer((_cur: number, newValue: number) => {
       if (newValue < min) return min;
       if (newValue > max) return max;
@@ -35,7 +22,7 @@ export const ForcedMinMaxInput = forwardRef<HTMLInputElement, Props>(
 
     useEffect(() => {
       onChangeValue?.(value);
-    }, [value]);
+    }, [value, onChangeValue]);
 
     return (
       <Input
@@ -55,3 +42,5 @@ export const ForcedMinMaxInput = forwardRef<HTMLInputElement, Props>(
     );
   },
 );
+
+ForcedMinMaxInput.displayName = "ForcedMinMaxInput";

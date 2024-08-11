@@ -1,19 +1,19 @@
 import { FC, useEffect, useState } from "react";
 import { TaggedNumberInput } from "./tagged-input";
 import { INITIAL_GUMMYGRID_CONFIG } from "@/contexts/gummygrid/constants";
-import { useGummyGrid } from "@/contexts/gummygrid/provider";
+import { useGummyGrid } from "@/contexts/gummygrid";
 
 export const AreaRatioInput: FC = () => {
   const [ratio, setRatio] = useState(
     INITIAL_GUMMYGRID_CONFIG.svg.patternAreaRatio * 100,
   );
-  const gg = useGummyGrid();
+  const { reconfig: ggReconfig } = useGummyGrid();
 
   useEffect(() => {
-    gg.reconfig((config) => {
+    ggReconfig((config) => {
       config.svg.patternAreaRatio = ratio / 100;
     });
-  }, [ratio]);
+  }, [ratio, ggReconfig]);
 
   return (
     <TaggedNumberInput

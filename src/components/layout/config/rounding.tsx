@@ -1,7 +1,7 @@
-import { useEffect, useReducer } from "react";
+import { useCallback, useEffect, useReducer } from "react";
 import { TaggedNumberInput } from "./tagged-input";
 import { INITIAL_GUMMYGRID_CONFIG } from "@/contexts/gummygrid/constants";
-import { useGummyGrid } from "@/contexts/gummygrid/provider";
+import { useGummyGrid } from "@/contexts/gummygrid";
 
 const INITIAL_ROUNDING = {
   outer: INITIAL_GUMMYGRID_CONFIG.svg.cellRounding.outer * 100,
@@ -18,16 +18,16 @@ export const RoundingInput = () => {
     }),
     INITIAL_ROUNDING,
   );
-  const gg = useGummyGrid();
+  const { reconfig: ggReconfig } = useGummyGrid();
 
   useEffect(() => {
-    gg.reconfig((config) => {
+    ggReconfig((config) => {
       config.svg.cellRounding = {
         outer: rounding.outer / 100,
         inner: rounding.inner / 100,
       };
     });
-  }, [rounding]);
+  }, [rounding, ggReconfig]);
 
   return (
     <div className="flex flex-col gap-2">
@@ -37,7 +37,10 @@ export const RoundingInput = () => {
           min={0}
           max={100}
           value={rounding.outer}
-          onChangeValue={(outer) => changeRounding({ outer })}
+          onChangeValue={useCallback(
+            (outer: number) => changeRounding({ outer }),
+            [],
+          )}
         />
         <span className="text-sm text-neutral-700">outer</span>
       </div>
@@ -47,7 +50,10 @@ export const RoundingInput = () => {
           min={0}
           max={100}
           value={rounding.inner}
-          onChangeValue={(inner) => changeRounding({ inner })}
+          onChangeValue={useCallback(
+            (inner: number) => changeRounding({ inner }),
+            [],
+          )}
         />
         <span className="text-sm text-neutral-700">inner</span>
       </div>

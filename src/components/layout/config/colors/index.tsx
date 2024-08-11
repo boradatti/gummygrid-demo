@@ -6,14 +6,14 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { ColorPicker } from "./picker";
-import { useEffect, useReducer, useRef, useState } from "react";
+import { useCallback, useEffect, useReducer, useRef, useState } from "react";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { useGummyGrid } from "@/contexts/gummygrid/provider";
+import { useGummyGrid } from "@/contexts/gummygrid";
 import { ColorsReducer } from "./types";
 import { colorsReducer } from "./utils";
 import { PickedColor } from "./picked-color";
@@ -30,17 +30,22 @@ export const ColorsInput = () => {
   );
   const canAddColors = colors.length < MAX_PICKED_COLORS;
   const canDeleteColors = colors.length > 1;
-  const gg = useGummyGrid();
+  const { reconfig: ggReconfig } = useGummyGrid();
   const addColorBtnRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    gg.reconfig((config) => {
+    ggReconfig((config) => {
       const colorsDarkened = darkenColors(colors);
       config.svg.colors.cellFill = colors;
       config.svg.colors.cellStroke = colorsDarkened;
       config.svg.colors.dropShadow = colorsDarkened;
     });
-  }, [colors]);
+  }, [colors, ggReconfig]);
+
+  const onAddColor = useCallback((color: string) => {
+    updateColors({ type: "ADD", color });
+    setPickerOpen(false);
+  }, []);
 
   return (
     <div className="flex items-center gap-1">
@@ -103,12 +108,7 @@ export const ColorsInput = () => {
             if (canAddColors) addColorBtnRef.current!.focus();
           }}
         >
-          <ColorPicker
-            onApply={(color) => {
-              updateColors({ type: "ADD", color });
-              setPickerOpen(false);
-            }}
-          />
+          <ColorPicker onApply={onAddColor} />
         </PopoverContent>
       </Popover>
     </div>

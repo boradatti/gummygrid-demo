@@ -1,24 +1,24 @@
 import { useEffect, useLayoutEffect, useState } from "react";
 import { Input } from "../ui/input";
-import { useGummyGrid } from "@/contexts/gummygrid/provider";
+import { useGummyGrid } from "@/contexts/gummygrid";
 import { useTheme } from "@/contexts/theme";
 import { getComputedCssProperty } from "@/lib/utils";
 
 export const AvatarShowcase = () => {
-  const gg = useGummyGrid();
+  const { reconfig: ggReconfig, generator: ggGenerator } = useGummyGrid();
   const [usernameInput, setUsernameInput] = useState("");
   const { theme } = useTheme();
 
-  const svg = gg.generator.buildFrom(usernameInput);
+  const svg = ggGenerator.buildFrom(usernameInput);
   const svgDataUrl = svg.toURLEncodedString({ withPrefix: true });
 
   useLayoutEffect(() => {
-    gg.reconfig((config) => {
+    ggReconfig((config) => {
       config.svg.colors.background = [
         `hsl(${getComputedCssProperty("--background")})`,
       ];
     });
-  }, [theme]);
+  }, [theme, ggReconfig]);
 
   useEffect(() => {
     (document.getElementById("favicon") as HTMLLinkElement).href = svgDataUrl;

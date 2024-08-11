@@ -51,6 +51,7 @@ export const Header = () => {
               <a
                 href="https://github.com/boradatti/gummygrid"
                 target="_blank"
+                rel="noreferrer"
                 className={`flex gap-3 ${buttonVariants({ variant: "outline", size: isMobile ? "icon" : "default" })}`}
               >
                 <GithubIcon className="w-5" />

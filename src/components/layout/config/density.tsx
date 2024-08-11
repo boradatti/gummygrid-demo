@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { TaggedNumberInput } from "./tagged-input";
 import { INITIAL_GUMMYGRID_CONFIG } from "@/contexts/gummygrid/constants";
-import { useGummyGrid } from "@/contexts/gummygrid/provider";
+import { useGummyGrid } from "@/contexts/gummygrid";
 import {
   Tooltip,
   TooltipContent,
@@ -14,13 +14,13 @@ const INITIAL_DENSITY =
 
 export const DensityInput = () => {
   const [density, setDensity] = useState(INITIAL_DENSITY);
-  const gg = useGummyGrid();
+  const { reconfig: ggReconfig } = useGummyGrid();
 
   useEffect(() => {
-    gg.reconfig((config) => {
+    ggReconfig((config) => {
       config.randomizer.bias.cellFillProbability = density / 100;
     });
-  }, [density]);
+  }, [density, ggReconfig]);
 
   return (
     <TooltipProvider>

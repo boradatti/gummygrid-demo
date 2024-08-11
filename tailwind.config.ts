@@ -78,6 +78,7 @@ const config: Config = {
   },
   plugins: [
     animatePlugin,
+    // eslint-disable-next-line
     // @ts-ignore
     "prettier-plugin-tailwindcss",
   ],

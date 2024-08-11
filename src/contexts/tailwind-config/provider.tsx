@@ -1,4 +1,4 @@
-import { createContext, useContext } from "react";
+import { createContext } from "react";
 import type { ReactNode } from "react";
 import resolveConfig from "tailwindcss/resolveConfig";
 import tailwindConfig from "../../../tailwind.config";
@@ -7,23 +7,19 @@ import type { Config as TailwindConfig } from "tailwindcss";
 type ResolvedConfig = ReturnType<typeof resolveConfig>;
 type ProviderContextState = ResolvedConfig & TailwindConfig;
 
-// @ts-ignore
-const TailwindConfigContext = createContext<ProviderContextState>(null);
+const TAILWIND_CONFIG = resolveConfig(tailwindConfig) as ProviderContextState;
 
-export const TailwindConfigProvider = ({
-  children,
-}: {
+export const TailwindConfigContext =
+  createContext<ProviderContextState>(TAILWIND_CONFIG);
+
+type Props = {
   children: ReactNode;
-}) => {
-  const config = resolveConfig(tailwindConfig) as ProviderContextState;
+};
 
+export const TailwindConfigProvider = ({ children }: Props) => {
   return (
-    <TailwindConfigContext.Provider value={config}>
+    <TailwindConfigContext.Provider value={TAILWIND_CONFIG}>
       {children}
     </TailwindConfigContext.Provider>
   );
-};
-
-export const useTailwindConfig = () => {
-  return useContext(TailwindConfigContext);
 };

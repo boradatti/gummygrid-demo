@@ -15,6 +15,7 @@ export const INITIAL_GUMMYGRID_CONFIG: StrictGummyGridConfig = {
     salt: 0,
     bias: {
       cellFillProbability: 0.5,
+      // eslint-disable-next-line
       // @ts-ignore
       colorWeights: {},
     },
@@ -46,6 +47,7 @@ export const INITIAL_GUMMYGRID_CONFIG: StrictGummyGridConfig = {
     gutter: 0,
     flow: true,
     strokeWidth: 0.5,
+    // eslint-disable-next-line
     // @ts-ignore
     filters: {
       dropShadow: ["0", "0", "0.5px"],

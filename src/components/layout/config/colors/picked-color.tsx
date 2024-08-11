@@ -3,7 +3,7 @@ import clsx from "clsx";
 import { FC } from "react";
 
 type Props = {
-  onClick: () => any;
+  onClick: () => unknown;
   canDeleteColors: boolean;
   color: string;
 };

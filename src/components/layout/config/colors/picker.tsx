@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import {
   ComponentProps,
   forwardRef,
+  useCallback,
   useEffect,
   useReducer,
   useRef,
@@ -16,7 +17,7 @@ import { useLocalForwardedRef } from "@/hooks/use-local-forwarded-ref";
 import { convertHslToString } from "./utils";
 
 type Props = ComponentProps<"div"> & {
-  onApply: (color: string) => any;
+  onApply: (color: string) => unknown;
 };
 
 export const ColorPicker = forwardRef<HTMLDivElement, Props>(
@@ -31,23 +32,22 @@ export const ColorPicker = forwardRef<HTMLDivElement, Props>(
       convertHslToString(pickedColor),
     );
 
+    const applyPickedColor = useCallback(() => {
+      onApply(pickedColorStringRef.current);
+    }, [onApply]);
+
     useEffect(() => {
       pickedColorStringRef.current = convertHslToString(pickedColor);
     }, [pickedColor]);
 
     useEffect(() => {
-      document.addEventListener("keydown", onKeyboardSubmit);
-      return () => document.removeEventListener("keydown", onKeyboardSubmit);
-    }, []);
-
-    function onKeyboardSubmit(e: KeyboardEvent) {
-      if (!e.ctrlKey || e.key != "Enter") return;
-      applyPickedColor();
-    }
-
-    function applyPickedColor() {
-      onApply(pickedColorStringRef.current);
-    }
+      const keyboardSubmit = (e: KeyboardEvent) => {
+        if (!e.ctrlKey || e.key != "Enter") return;
+        applyPickedColor();
+      };
+      document.addEventListener("keydown", keyboardSubmit);
+      return () => document.removeEventListener("keydown", keyboardSubmit);
+    }, [applyPickedColor]);
 
     return (
       <div
@@ -63,7 +63,10 @@ export const ColorPicker = forwardRef<HTMLDivElement, Props>(
             min={0}
             max={360}
             value={pickedColor.h}
-            onChangeValue={(h) => updatePickedColor({ h })}
+            onChangeValue={useCallback(
+              (h: number) => updatePickedColor({ h }),
+              [],
+            )}
           />
           <TaggedNumberInput
             size="sm"
@@ -71,7 +74,10 @@ export const ColorPicker = forwardRef<HTMLDivElement, Props>(
             min={0}
             max={100}
             value={pickedColor.s}
-            onChangeValue={(s) => updatePickedColor({ s })}
+            onChangeValue={useCallback(
+              (s: number) => updatePickedColor({ s }),
+              [],
+            )}
           />
           <TaggedNumberInput
             size="sm"
@@ -79,7 +85,10 @@ export const ColorPicker = forwardRef<HTMLDivElement, Props>(
             min={0}
             max={100}
             value={pickedColor.l}
-            onChangeValue={(l) => updatePickedColor({ l })}
+            onChangeValue={useCallback(
+              (l: number) => updatePickedColor({ l }),
+              [],
+            )}
           />
         </div>
         <Button onClick={applyPickedColor} size="sm" variant="default">
@@ -89,3 +98,4 @@ export const ColorPicker = forwardRef<HTMLDivElement, Props>(
     );
   },
 );
+ColorPicker.displayName = "ColorPicker";
