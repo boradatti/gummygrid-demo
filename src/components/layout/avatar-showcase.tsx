@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { Input } from "../ui/input";
 import { useGummyGrid } from "@/contexts/gummygrid/provider";
 import { useTheme } from "@/contexts/theme";
@@ -10,6 +10,7 @@ export const AvatarShowcase = () => {
   const { theme } = useTheme();
 
   const svg = gg.generator.buildFrom(usernameInput);
+  const svgDataUrl = svg.toURLEncodedString({ withPrefix: true });
 
   useLayoutEffect(() => {
     gg.reconfig((config) => {
@@ -19,14 +20,14 @@ export const AvatarShowcase = () => {
     });
   }, [theme]);
 
+  useEffect(() => {
+    (document.getElementById("favicon") as HTMLLinkElement).href = svgDataUrl;
+  }, [svgDataUrl]);
+
   return (
     <div className="flex w-fit flex-col gap-3">
       <div className="border-2 border-solid">
-        <img
-          className="w-96 md:w-72"
-          src={svg.toURLEncodedString({ withPrefix: true })}
-          alt="generated avatar"
-        />
+        <img className="w-96 md:w-72" src={svgDataUrl} alt="generated avatar" />
       </div>
       <Input
         placeholder="enter username..."
