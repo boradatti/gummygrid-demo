@@ -1,25 +1,27 @@
-import { Input } from "@/components/ui/input";
 import { INITIAL_GUMMYGRID_CONFIG } from "@/contexts/gummygrid/constants";
 import { useGummyGrid } from "@/contexts/gummygrid/provider";
+import { ForcedMinMaxInput } from "../forced-min-max-input";
 
 const INITIAL =
   parseFloat(INITIAL_GUMMYGRID_CONFIG.svg.filters.dropShadow[2]) * 2;
+const SHADOW_MIN = 0;
+const SHADOW_MAX = 9;
 
 export const ShadowInput = () => {
   const gg = useGummyGrid();
 
   return (
     <div className="flex items-center gap-2">
-      <Input
+      <ForcedMinMaxInput
         type="number"
-        defaultValue={INITIAL}
-        min={0}
-        max={9}
+        initial={INITIAL}
+        min={SHADOW_MIN}
+        max={SHADOW_MAX}
         className="h-6 w-6 p-0 pl-2"
-        onChange={(e) => {
+        onChangeValue={(value) => {
           gg.reconfig((config) => {
             const { dropShadow } = config.svg.filters;
-            dropShadow.splice(-1, 1, `${+e.target.value / 2}px`);
+            dropShadow.splice(-1, 1, `${value / 3}px`);
           });
         }}
       />

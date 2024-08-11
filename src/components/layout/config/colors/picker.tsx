@@ -63,7 +63,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, Props>(
             min={0}
             max={360}
             value={pickedColor.h}
-            onChange={(h) => updatePickedColor({ h })}
+            onChangeValue={(h) => updatePickedColor({ h })}
           />
           <TaggedNumberInput
             size="sm"
@@ -71,7 +71,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, Props>(
             min={0}
             max={100}
             value={pickedColor.s}
-            onChange={(s) => updatePickedColor({ s })}
+            onChangeValue={(s) => updatePickedColor({ s })}
           />
           <TaggedNumberInput
             size="sm"
@@ -79,7 +79,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, Props>(
             min={0}
             max={100}
             value={pickedColor.l}
-            onChange={(l) => updatePickedColor({ l })}
+            onChangeValue={(l) => updatePickedColor({ l })}
           />
         </div>
         <Button onClick={applyPickedColor} size="sm" variant="default">

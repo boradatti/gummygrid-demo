@@ -37,7 +37,7 @@ export const RoundingInput = () => {
           min={0}
           max={100}
           value={rounding.outer}
-          onChange={(outer) => changeRounding({ outer })}
+          onChangeValue={(outer) => changeRounding({ outer })}
         />
         <div className="h-[0.5px] w-3 bg-neutral-300"></div>
         <span className="text-neutral-700">outer</span>
@@ -48,7 +48,7 @@ export const RoundingInput = () => {
           min={0}
           max={100}
           value={rounding.inner}
-          onChange={(inner) => changeRounding({ inner })}
+          onChangeValue={(inner) => changeRounding({ inner })}
         />
         <div className="h-[0.5px] w-3 bg-neutral-300"></div>
         <span className="text-neutral-700">inner</span>

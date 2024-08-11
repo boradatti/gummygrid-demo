@@ -31,7 +31,7 @@ export const DensityInput = () => {
             min={1}
             max={100}
             value={density}
-            onChange={setDensity}
+            onChangeValue={setDensity}
           />
         </TooltipTrigger>
         <TooltipContent side="bottom" align="start" sideOffset={6}>

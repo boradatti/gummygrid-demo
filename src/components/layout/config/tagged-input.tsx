@@ -1,31 +1,30 @@
-import { Input } from "@/components/ui/input";
 import clsx from "clsx";
-import { FC, ForwardedRef, forwardRef } from "react";
+import { ComponentProps, forwardRef } from "react";
+import { ForcedMinMaxInput } from "../forced-min-max-input";
 
-type Props = {
+type Props = Omit<ComponentProps<"input">, "size"> & {
   tag: string;
   value?: number;
   min?: number;
   max?: number;
-  onChange?: (val: number) => any;
+  onChangeValue?: (val: number) => any;
   size?: "sm" | "md";
 };
 
-export const TaggedNumberInput: FC<Props> = forwardRef(
-  ({ tag, min, max, value, onChange, size = "md", ...props }, ref) => {
+export const TaggedNumberInput = forwardRef<HTMLInputElement, Props>(
+  ({ tag, min, max, value, onChangeValue, size = "md", ...props }, ref) => {
     return (
       <div className="relative w-fit">
-        <Input
+        <ForcedMinMaxInput
           className={clsx("textfield h-8", {
             "w-16 p-3": size == "md",
             "w-14 p-2": size == "sm",
           })}
-          type="number"
-          min={min}
-          max={max}
-          value={value}
-          onChange={(e) => onChange?.(+e.currentTarget.value)}
-          ref={ref as ForwardedRef<HTMLInputElement>}
+          initial={value ?? 0}
+          min={min ?? -Infinity}
+          max={max ?? Infinity}
+          onChangeValue={onChangeValue}
+          ref={ref}
           {...props}
         />
         <span className="absolute right-2 top-0 grid h-full place-items-center text-neutral-500">

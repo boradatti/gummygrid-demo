@@ -70,15 +70,15 @@ export const DimensionsInput: FC = () => {
       <TaggedNumberInput
         tag="w"
         value={dimensions.width}
-        onChange={(width) => changeDimensions({ width })}
-        min={0}
+        onChangeValue={(width) => changeDimensions({ width })}
+        min={1}
         size="sm"
       />
       <TaggedNumberInput
         tag="h"
         value={dimensions.height}
-        onChange={(height) => changeDimensions({ height })}
-        min={0}
+        onChangeValue={(height) => changeDimensions({ height })}
+        min={1}
         size="sm"
       />
 

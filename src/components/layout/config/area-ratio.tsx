@@ -21,7 +21,7 @@ export const AreaRatioInput: FC = () => {
       min={1}
       max={100}
       value={ratio}
-      onChange={setRatio}
+      onChangeValue={setRatio}
     />
   );
 };
