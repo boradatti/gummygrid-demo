@@ -1,13 +1,8 @@
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { Input } from "../ui/input";
 import { useGummyGrid } from "@/contexts/gummygrid/provider";
 import { useTheme } from "@/contexts/theme";
-import { Theme } from "@/contexts/theme/types";
-
-const BACKGROUND_COLORS_BY_THEME: Record<Theme, string> = {
-  dark: "white",
-  light: "black",
-};
+import { getComputedCssProperty } from "@/lib/utils";
 
 export const AvatarShowcase = () => {
   const gg = useGummyGrid();
@@ -16,15 +11,17 @@ export const AvatarShowcase = () => {
 
   const svg = gg.generator.buildFrom(usernameInput);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     gg.reconfig((config) => {
-      config.svg.colors.background = [BACKGROUND_COLORS_BY_THEME[theme]];
+      config.svg.colors.background = [
+        `hsl(${getComputedCssProperty("--background")})`,
+      ];
     });
   }, [theme]);
 
   return (
     <div className="flex w-fit flex-col gap-3">
-      <div className="border-[3px] border-solid">
+      <div className="border-2 border-solid">
         <img
           className="w-96 md:w-72"
           src={svg.toURLEncodedString({ withPrefix: true })}

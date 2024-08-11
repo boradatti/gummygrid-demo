@@ -9,3 +9,12 @@ export function cn(...inputs: ClassValue[]) {
 export function darkenColors(colors: string[]) {
   return colors.map((clr) => tinycolor(clr).darken(20).toHslString());
 }
+
+export function getComputedCssProperty(
+  propertyKey: `--${string}`,
+  fromEl?: HTMLElement,
+) {
+  fromEl ??= document.documentElement;
+  const computedStyles = window.getComputedStyle(fromEl);
+  return computedStyles.getPropertyValue(propertyKey);
+}
