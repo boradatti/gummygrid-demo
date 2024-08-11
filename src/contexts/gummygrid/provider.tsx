@@ -1,10 +1,12 @@
 import { createContext, useReducer } from "react";
-import { GummyGridProviderState, type GummyGridProviderProps } from "./types";
+
 import GummyGrid from "gummygrid";
+
 import {
   INITIAL_GUMMYGRID_CONFIG,
   INITIAL_GUMMYGRID_PROVIDER_STATE,
 } from "./constants";
+import { type GummyGridProviderProps, GummyGridProviderState } from "./types";
 import { gummyGridConfigReducer } from "./utils";
 
 export const GummyGridContext = createContext<GummyGridProviderState>(

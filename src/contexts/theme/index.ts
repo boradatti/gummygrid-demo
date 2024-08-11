@@ -1,4 +1,5 @@
 import { useContext } from "react";
+
 import { ThemeProviderContext } from "./provider";
 
 export { ThemeProvider } from "./provider";

@@ -1,5 +1,5 @@
-import { Header } from "@/components/layout/header";
 import { AvatarShowcase } from "@/components/layout/avatar-showcase";
+import { Header } from "@/components/layout/header";
 import { SettingsPanel } from "@/components/layout/settings-panel";
 
 function App() {

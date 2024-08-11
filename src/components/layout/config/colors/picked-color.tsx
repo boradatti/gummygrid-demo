@@ -1,6 +1,8 @@
-import DeleteIcon from "@/assets/icons/delete.svg?react";
-import clsx from "clsx";
 import { FC } from "react";
+
+import DeleteIcon from "@/assets/icons/delete.svg?react";
+
+import clsx from "clsx";
 
 type Props = {
   onClick: () => unknown;

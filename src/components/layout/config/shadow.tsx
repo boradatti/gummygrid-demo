@@ -1,7 +1,9 @@
-import { INITIAL_GUMMYGRID_CONFIG } from "@/contexts/gummygrid/constants";
-import { useGummyGrid } from "@/contexts/gummygrid";
-import { ForcedMinMaxInput } from "../forced-min-max-input";
 import { useCallback } from "react";
+
+import { useGummyGrid } from "@/contexts/gummygrid";
+import { INITIAL_GUMMYGRID_CONFIG } from "@/contexts/gummygrid/constants";
+
+import { ForcedMinMaxInput } from "../forced-min-max-input";
 
 const INITIAL =
   parseFloat(INITIAL_GUMMYGRID_CONFIG.svg.filters.dropShadow[2]) * 2;

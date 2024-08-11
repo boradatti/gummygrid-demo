@@ -1,5 +1,7 @@
-import clsx from "clsx";
 import { ComponentProps, forwardRef } from "react";
+
+import clsx from "clsx";
+
 import { ForcedMinMaxInput } from "../forced-min-max-input";
 
 type Props = Omit<ComponentProps<"input">, "size"> & {

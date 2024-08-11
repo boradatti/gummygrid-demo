@@ -1,16 +1,20 @@
+import { type FC, useCallback, useEffect, useReducer } from "react";
+
 import LinkIcon from "@/assets/icons/link.svg?react";
 import UnlinkIcon from "@/assets/icons/unlink.svg?react";
-import { type FC, useCallback, useEffect, useReducer } from "react";
-import { TaggedNumberInput } from "./tagged-input";
+
+import { Button } from "@/components/ui/button";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+
 import { useGummyGrid } from "@/contexts/gummygrid";
 import { INITIAL_GUMMYGRID_CONFIG } from "@/contexts/gummygrid/constants";
-import { Button } from "@/components/ui/button";
+
+import { TaggedNumberInput } from "./tagged-input";
 
 type GridSize = { rows: number; columns: number };
 type Dimensions = { width: number; height: number };

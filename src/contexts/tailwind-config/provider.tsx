@@ -1,8 +1,10 @@
 import { createContext } from "react";
 import type { ReactNode } from "react";
-import resolveConfig from "tailwindcss/resolveConfig";
-import tailwindConfig from "../../../tailwind.config";
+
 import type { Config as TailwindConfig } from "tailwindcss";
+import resolveConfig from "tailwindcss/resolveConfig";
+
+import tailwindConfig from "../../../tailwind.config";
 
 type ResolvedConfig = ReturnType<typeof resolveConfig>;
 type ProviderContextState = ResolvedConfig & TailwindConfig;

@@ -1,8 +1,10 @@
 import { useEffect, useLayoutEffect, useState } from "react";
-import { Input } from "../ui/input";
+
 import { useGummyGrid } from "@/contexts/gummygrid";
 import { useTheme } from "@/contexts/theme";
 import { getComputedCssProperty } from "@/lib/utils";
+
+import { Input } from "../ui/input";
 
 export const AvatarShowcase = () => {
   const { reconfig: ggReconfig, generator: ggGenerator } = useGummyGrid();

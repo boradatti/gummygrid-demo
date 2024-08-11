@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useReducer } from "react";
-import { TaggedNumberInput } from "./tagged-input";
-import { INITIAL_GUMMYGRID_CONFIG } from "@/contexts/gummygrid/constants";
+
 import { useGummyGrid } from "@/contexts/gummygrid";
+import { INITIAL_GUMMYGRID_CONFIG } from "@/contexts/gummygrid/constants";
+
+import { TaggedNumberInput } from "./tagged-input";
 
 const INITIAL_ROUNDING = {
   outer: INITIAL_GUMMYGRID_CONFIG.svg.cellRounding.outer * 100,

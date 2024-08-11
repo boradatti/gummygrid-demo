@@ -1,6 +1,7 @@
+import type { ReactNode } from "react";
+
 import type { GummyGridConfig } from "gummygrid";
 import type GummyGrid from "gummygrid";
-import type { ReactNode } from "react";
 
 export type GummyGridProviderProps = {
   children: ReactNode;

@@ -1,4 +1,5 @@
 import type { HslColor } from "react-colorful";
+
 import { ColorsReducer } from "./types";
 
 export const colorsReducer: ColorsReducer = (colors, action) => {

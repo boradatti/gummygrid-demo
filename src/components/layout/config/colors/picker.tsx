@@ -1,5 +1,3 @@
-import "./picker.css";
-import { Button } from "@/components/ui/button";
 import {
   ComponentProps,
   forwardRef,
@@ -8,12 +6,19 @@ import {
   useReducer,
   useRef,
 } from "react";
-import { HslColorPicker } from "react-colorful";
-import { TaggedNumberInput } from "../tagged-input";
-import { cn } from "@/lib/utils";
-import { HslColorReducer } from "./types";
-import { INITIAL_PICKED_COLOR } from "./constants";
+
+import { Button } from "@/components/ui/button";
+
 import { useLocalForwardedRef } from "@/hooks/use-local-forwarded-ref";
+import { cn } from "@/lib/utils";
+
+import { HslColorPicker } from "react-colorful";
+
+import { TaggedNumberInput } from "../tagged-input";
+import { INITIAL_PICKED_COLOR } from "./constants";
+import "./picker.css";
+import "./picker.css";
+import { HslColorReducer } from "./types";
 import { convertHslToString } from "./utils";
 
 type Props = ComponentProps<"div"> & {

@@ -1,13 +1,14 @@
 import { useLayoutEffect, useState } from "react";
-import { getThemeFromChoice } from "./utils";
+import { createContext } from "react";
+
+import { INITIAL_THEME_STATE } from "./constants";
 import type {
   Theme,
   ThemeChoice,
   ThemeProviderProps,
   ThemeProviderState,
 } from "./types";
-import { INITIAL_THEME_STATE } from "./constants";
-import { createContext } from "react";
+import { getThemeFromChoice } from "./utils";
 
 export const ThemeProviderContext =
   createContext<ThemeProviderState>(INITIAL_THEME_STATE);

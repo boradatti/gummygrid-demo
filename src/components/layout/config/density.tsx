@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
-import { TaggedNumberInput } from "./tagged-input";
-import { INITIAL_GUMMYGRID_CONFIG } from "@/contexts/gummygrid/constants";
-import { useGummyGrid } from "@/contexts/gummygrid";
+
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+
+import { useGummyGrid } from "@/contexts/gummygrid";
+import { INITIAL_GUMMYGRID_CONFIG } from "@/contexts/gummygrid/constants";
+
+import { TaggedNumberInput } from "./tagged-input";
 
 const INITIAL_DENSITY =
   INITIAL_GUMMYGRID_CONFIG.randomizer.bias.cellFillProbability * 100;

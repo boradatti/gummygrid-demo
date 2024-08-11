@@ -1,4 +1,5 @@
-import { forwardRef, useEffect, useReducer, type ComponentProps } from "react";
+import { type ComponentProps, forwardRef, useEffect, useReducer } from "react";
+
 import { Input } from "@/components/ui/input";
 
 type Props = Exclude<ComponentProps<"input">, "type" | "value"> & {

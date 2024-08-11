@@ -1,5 +1,6 @@
-import { useTailwindConfig } from "@/contexts/tailwind-config";
 import { useEffect, useReducer } from "react";
+
+import { useTailwindConfig } from "@/contexts/tailwind-config";
 
 export const useDimensions = () => {
   const [dimensions, resetDimensions] = useReducer(

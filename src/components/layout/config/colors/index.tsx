@@ -1,24 +1,28 @@
+import { useCallback, useEffect, useReducer, useRef, useState } from "react";
+
 import PlusIcon from "@/assets/icons/plus.svg?react";
+
 import { Button } from "@/components/ui/button";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { ColorPicker } from "./picker";
-import { useCallback, useEffect, useReducer, useRef, useState } from "react";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+
 import { useGummyGrid } from "@/contexts/gummygrid";
+import { darkenColors } from "@/lib/utils";
+
+import { DEFAULT_PICKED_COLORS, MAX_PICKED_COLORS } from "./constants";
+import { PickedColor } from "./picked-color";
+import { ColorPicker } from "./picker";
 import { ColorsReducer } from "./types";
 import { colorsReducer } from "./utils";
-import { PickedColor } from "./picked-color";
-import { DEFAULT_PICKED_COLORS, MAX_PICKED_COLORS } from "./constants";
-import { darkenColors } from "@/lib/utils";
 
 export const ColorsInput = () => {
   const [pickerOpen, setPickerOpen] = useState(false);

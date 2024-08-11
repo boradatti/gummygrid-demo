@@ -1,6 +1,7 @@
 import { Checkbox } from "@/components/ui/checkbox";
-import { INITIAL_GUMMYGRID_CONFIG } from "@/contexts/gummygrid/constants";
+
 import { useGummyGrid } from "@/contexts/gummygrid";
+import { INITIAL_GUMMYGRID_CONFIG } from "@/contexts/gummygrid/constants";
 
 const INITIAL = INITIAL_GUMMYGRID_CONFIG.svg.flow;
 

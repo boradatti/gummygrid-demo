@@ -1,6 +1,8 @@
-import { GummyGridProviderState, StrictGummyGridConfig } from "./types";
-import GummyGrid from "gummygrid";
 import { darkenColors } from "@/lib/utils";
+
+import GummyGrid from "gummygrid";
+
+import { GummyGridProviderState, StrictGummyGridConfig } from "./types";
 
 const cellColors = [
   "hsl(12, 90%, 62%)",

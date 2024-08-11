@@ -1,7 +1,8 @@
+import GithubIcon from "@/assets/icons/github.svg?react";
+import MonitorIcon from "@/assets/icons/monitor.svg?react";
 import MoonIcon from "@/assets/icons/moon.svg?react";
 import SunIcon from "@/assets/icons/sun.svg?react";
-import MonitorIcon from "@/assets/icons/monitor.svg?react";
-import GithubIcon from "@/assets/icons/github.svg?react";
+
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -9,15 +10,17 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import clsx from "clsx";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+
 import { useTheme } from "@/contexts/theme";
 import { useDimensions } from "@/hooks/use-dimensions";
+
+import clsx from "clsx";
 
 export const Header = () => {
   const { theme, themeChoice, setThemeChoice } = useTheme();

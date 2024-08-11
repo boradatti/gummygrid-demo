@@ -1,5 +1,20 @@
 {
-  "plugins": ["prettier-plugin-tailwindcss"],
+  "plugins": [
+    "prettier-plugin-tailwindcss",
+    "@trivago/prettier-plugin-sort-imports"
+  ],
+
   "tailwindConfig": "./tailwind.config.ts",
-  "tailwindFunctions": ["clsx", "cva"]
+  "tailwindFunctions": ["clsx", "cva"],
+
+  "importOrder": [
+    "^react(-dom)?(/(.*))?$",
+    "^@/assets/(.*)$",
+    "^@/components/(.*)$",
+    "^@/.*/(.*)$",
+    "<THIRD_PARTY_MODULES>",
+    "^[./]"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
 }
