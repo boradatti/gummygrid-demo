@@ -80,7 +80,7 @@ export const ColorsInput = () => {
                     ref={addColorBtnRef}
                     tabIndex={canAddColors ? 0 : -1}
                     disabled={!canAddColors}
-                    className="group h-6 w-6"
+                    className="group h-7 w-7"
                     variant="ghost"
                     size="icon"
                   >

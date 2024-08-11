@@ -13,7 +13,7 @@ export const PickedColor: FC<Props> = ({ canDeleteColors, onClick, color }) => (
     disabled={!canDeleteColors}
     onClick={onClick}
     className={clsx(
-      "group h-6 w-6 border-2 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-700",
+      "group h-7 w-7 border-2 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-700",
       { "cursor-default": !canDeleteColors },
     )}
     style={{ backgroundColor: color }}
